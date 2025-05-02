@@ -7,18 +7,11 @@ from sklearn.model_selection import train_test_split
 # 🚀 Disable Weights & Biases (W&B)
 os.environ["WANDB_DISABLED"] = "true"
 
-# 📌 Load Sample Dataset (Replace with your own CSV file)
-data = pd.DataFrame({
-    "text": [
-        "I'm feeling really down today...", 
-        "Life is beautiful!", 
-        "I'm so anxious about my exams."
-    ],
-    "label": ["depressed", "neutral", "anxious"]  # Replace with actual labels
-})
+# 📌 Load Tweets50k Dataset
+data = pd.read_csv("tweets50k.csv")  # Assumes CSV has 'text' and 'label' columns
 
 # ✅ Convert labels to numerical values
-label_mapping = {"depressed": 0, "neutral": 1, "anxious": 2}
+label_mapping = {"depressed": 0, "neutral": 1, "anxious": 2}  # Adjust based on actual labels in tweets50k.csv
 data["label"] = data["label"].map(label_mapping)
 
 # 🔹 Split dataset into training & testing sets
